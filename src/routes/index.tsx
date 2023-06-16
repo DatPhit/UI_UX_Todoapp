@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Home from '../pages/Home';
-import Authen from '../pages/Authen';
+import SignUp from '../pages/SignUp';
+import SignIn from '../pages/SignIn';
+import Group from '../pages/Group';
+import Me from '../pages/Me';
+import AddTask from '../pages/AddTask';
 
 interface RouteConfig {
     path: string;
@@ -12,7 +16,11 @@ interface RouteConfig {
 // public routes
 const publicRoutes: RouteConfig[] = [
     { path: '/', component: Home },
-    { path: '/authen', component: Authen, layout: null },
+    { path: '/sign-up', component: SignUp },
+    { path: '/sign-in', component: SignIn },
+    { path: '/group', component: Group },
+    { path: '/me', component: Me },
+    { path: '/add-task', component: AddTask },
 ];
 
 const privateRoutes: RouteConfig[] = [];

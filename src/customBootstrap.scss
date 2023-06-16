@@ -1,0 +1,27 @@
+// Override default variables before the import
+@media (max-width: 576px) {
+    html {
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    html {
+        font-size: 0.9rem !important;
+    }
+}
+
+// NavItem
+$position-values: (
+    0: 0,
+    10: 10%,
+    15: 15%,
+    50: 50%,
+    100: 100%,
+);
+
+$progress-height: 5px;
+$progress-bar-bg: #4defe5;
+
+// Import Bootstrap and its default variables
+@import '../node_modules/bootstrap/scss/bootstrap';
