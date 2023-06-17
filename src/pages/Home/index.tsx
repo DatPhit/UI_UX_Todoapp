@@ -135,7 +135,7 @@ function Home() {
                             {/* Cột to-do */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '65vh' }}
+                                style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
@@ -203,7 +203,7 @@ function Home() {
                             {/* Cột Processing */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '65vh' }}
+                                style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
@@ -271,7 +271,7 @@ function Home() {
                             {/* Cột Done */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '65vh' }}
+                                style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
