@@ -18,13 +18,13 @@ const NavItem: React.FC<NavItemProps> = ({ text, classN, icon, href }) => {
         const icons = document.querySelectorAll('.nav-icons');
 
         buttons.forEach((button) => {
-            button.classList.remove('active');
+            button.classList.remove('nav_active');
         });
         icons.forEach((icon) => {
             icon.classList.remove('end-10');
         });
 
-        e.currentTarget.classList.add('active');
+        e.currentTarget.classList.add('nav_active');
     };
     return (
         <Link to={`${href}`}>

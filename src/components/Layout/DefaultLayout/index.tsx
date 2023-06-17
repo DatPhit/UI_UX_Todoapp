@@ -19,7 +19,10 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
                 >
                     <Taskbar />
                 </Col>
-                <Col className="" style={{ marginLeft: '17.5vw', borderRadius: 10 }}>
+                <Col
+                    className="me-2 position-fixed"
+                    style={{ height: '100vh', width: '81.5vw', borderRadius: 10, right: 0 }}
+                >
                     {children}
                 </Col>
             </Row>

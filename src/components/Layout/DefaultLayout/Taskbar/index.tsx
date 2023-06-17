@@ -49,8 +49,8 @@ function Taskbar() {
             </div>
 
             <NavItem
-                text="Dashboard"
-                classN={`${isSignIn ? 'active' : ''}`}
+                text="Trang chủ"
+                classN={`${isSignIn ? 'nav_active' : ''}`}
                 icon={faHouse}
                 href="/"
             />
