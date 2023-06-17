@@ -32,6 +32,7 @@
 .home_filter_type {
     width: 75%;
     aspect-ratio: 1/1;
+    font-size: 0.9rem;
     color: var(--text-color);
     background-color: #555571;
     border: 1px solid transparent;
@@ -52,7 +53,7 @@
 // Card
 .home_card {
     margin-bottom: 1rem;
-    height: 150px;
+    height: 9.375rem;
     padding: 12px;
     border-radius: 10px;
     border: 1px solid transparent;

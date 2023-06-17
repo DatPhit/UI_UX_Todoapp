@@ -74,7 +74,7 @@ function Home() {
                     {/* Cột bên trái chứa filter */}
                     <Col xs={1} className="p-0" style={{ width: '6%' }}>
                         {/* Button filter */}
-                        <button className="p-2 home_button_filter w-100 fs-6 rounded-2">
+                        <button className="p-2 center home_button_filter w-100 fs-6 rounded-2">
                             <FontAwesomeIcon icon={faFilter} />
                             <span className=" ms-2">Filter</span>
                         </button>
@@ -82,9 +82,9 @@ function Home() {
                         {/* Nav lọc công việc theo type */}
                         <div className="bg mt-3 h-100 d-flex flex-column align-items-center rounded-3">
                             <div className="mt-2 mb-3 fw-medium ">Type</div>
-                            <button className="home_filter_type type_active mt-4">ALL</button>
-                            <button className="home_filter_type mt-4">Group</button>
-                            <button className="home_filter_type mt-4">Me</button>
+                            <button className="home_filter_type type_active mb-4">ALL</button>
+                            <button className="home_filter_type mb-4">Group</button>
+                            <button className="home_filter_type mb-4">Me</button>
                         </div>
                     </Col>
 
@@ -135,7 +135,7 @@ function Home() {
                             {/* Cột to-do */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '65vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
@@ -203,7 +203,7 @@ function Home() {
                             {/* Cột Processing */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '65vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
@@ -271,7 +271,7 @@ function Home() {
                             {/* Cột Done */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '65vh' }}
                             >
                                 {/* Card */}
                                 {ListProject.map((project: ListProjectProps) => {
