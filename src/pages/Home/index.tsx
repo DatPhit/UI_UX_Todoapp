@@ -1,11 +1,12 @@
-import { Badge, Col, ProgressBar, Row } from 'react-bootstrap';
+import { Badge, Col, Row } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell, faFilter } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
 import JobSmall from '../../components/JobSmall/JobSmall';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAnglesDown, faBell, faFilter } from '@fortawesome/free-solid-svg-icons';
 import Notification from '../../components/Notification/Notification';
-import { ListProject, ListProjectProps } from '../../Model/ListProject';
-import moment from 'moment';
+import { ListJobProps } from '../../Model/ListJob';
+import { TodoJobs, ProcessingJobs, DoneJobs } from '../../Services/ProjectsService';
+import CardJob from '../../components/CardJob/CardJob';
 function Home() {
     return (
         <div>
@@ -138,66 +139,9 @@ function Home() {
                                 style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
-                                {ListProject.map((project: ListProjectProps) => {
-                                    if (project.status === 'To-do') {
-                                        return (
-                                            <div
-                                                className={`home_card bg ${
-                                                    project.priority ? 'priority' : ''
-                                                }`}
-                                                key={project.id}
-                                            >
-                                                {/* Badge status */}
-                                                <button
-                                                    className="p-1 position-absolute end-3 top-5"
-                                                    style={{
-                                                        backgroundColor: 'transparent',
-                                                        border: 'none',
-                                                    }}
-                                                >
-                                                    <Badge bg="secondary">Todo</Badge>
-                                                </button>
-
-                                                {/* Card head */}
-                                                <div
-                                                    className="mb-2 d-flex justify-content-start align-items-center"
-                                                    style={{ width: '83%' }}
-                                                >
-                                                    <FontAwesomeIcon
-                                                        className="text-danger"
-                                                        icon={faAnglesDown}
-                                                        size="lg"
-                                                    />
-                                                    <div className="ms-2 fw-medium">
-                                                        {project.task}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card descriptions */}
-                                                <div>
-                                                    <div className="small">
-                                                        {project.description}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card foot */}
-                                                <div className="position-absolute bottom-10 start-1 end-3">
-                                                    <div className="flex-grow-1 position-relative">
-                                                        <div className="linear-color small position-absolute end-0 bottom-100">
-                                                            {moment(project.deadline).format(
-                                                                'DD-MM-YYYY',
-                                                            )}
-                                                        </div>
-                                                        <ProgressBar
-                                                            now={2}
-                                                            className="ms-2 mt-2"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-                                })}
+                                {TodoJobs.map((TodoJob: ListJobProps) => (
+                                    <CardJob Job={TodoJob} />
+                                ))}
                             </div>
 
                             {/* Cột Processing */}
@@ -206,66 +150,9 @@ function Home() {
                                 style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
-                                {ListProject.map((project: ListProjectProps) => {
-                                    if (project.status === 'Processing') {
-                                        return (
-                                            <div
-                                                className={`home_card bg ${
-                                                    project.priority ? 'priority' : ''
-                                                }`}
-                                                key={project.id}
-                                            >
-                                                {/* Badge status */}
-                                                <button
-                                                    className="p-1 position-absolute end-3 top-5"
-                                                    style={{
-                                                        backgroundColor: 'transparent',
-                                                        border: 'none',
-                                                    }}
-                                                >
-                                                    <Badge bg="info">Proceesing</Badge>
-                                                </button>
-
-                                                {/* Card head */}
-                                                <div
-                                                    className="mb-2 d-flex justify-content-start align-items-center"
-                                                    style={{ width: '83%' }}
-                                                >
-                                                    <FontAwesomeIcon
-                                                        className="text-danger"
-                                                        icon={faAnglesDown}
-                                                        size="lg"
-                                                    />
-                                                    <div className="ms-2 fw-medium">
-                                                        {project.task}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card descriptions */}
-                                                <div>
-                                                    <div className="small">
-                                                        {project.description}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card foot */}
-                                                <div className="position-absolute bottom-10 start-1 end-3">
-                                                    <div className="flex-grow-1 position-relative">
-                                                        <div className="linear-color small position-absolute end-0 bottom-100">
-                                                            {moment(project.deadline).format(
-                                                                'DD-MM-YYYY',
-                                                            )}
-                                                        </div>
-                                                        <ProgressBar
-                                                            now={50}
-                                                            className="ms-2 mt-2"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-                                })}
+                                {ProcessingJobs.map((ProcessingJob: ListJobProps) => (
+                                    <CardJob Job={ProcessingJob} />
+                                ))}
                             </div>
 
                             {/* Cột Done */}
@@ -274,61 +161,9 @@ function Home() {
                                 style={{ width: '32.5%', height: '62.3vh' }}
                             >
                                 {/* Card */}
-                                {ListProject.map((project: ListProjectProps) => {
-                                    if (project.status === 'Done') {
-                                        return (
-                                            <div className={`home_card bg `} key={project.id}>
-                                                {/* Badge status */}
-                                                <button
-                                                    className="p-1 position-absolute end-3 top-5"
-                                                    style={{
-                                                        backgroundColor: 'transparent',
-                                                        border: 'none',
-                                                    }}
-                                                >
-                                                    <Badge bg="success">Done</Badge>
-                                                </button>
-
-                                                {/* Card head */}
-                                                <div
-                                                    className="mb-2 d-flex justify-content-start align-items-center"
-                                                    style={{ width: '83%' }}
-                                                >
-                                                    <FontAwesomeIcon
-                                                        className="text-danger"
-                                                        icon={faAnglesDown}
-                                                        size="lg"
-                                                    />
-                                                    <div className="ms-2 fw-medium">
-                                                        {project.task}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card descriptions */}
-                                                <div>
-                                                    <div className="small">
-                                                        {project.description}
-                                                    </div>
-                                                </div>
-
-                                                {/* Card foot */}
-                                                <div className="position-absolute bottom-10 start-1 end-3">
-                                                    <div className="flex-grow-1 position-relative">
-                                                        <div className="linear-color small position-absolute end-0 bottom-100">
-                                                            {moment(project.deadline).format(
-                                                                'YYYY-MM-DD',
-                                                            )}
-                                                        </div>
-                                                        <ProgressBar
-                                                            now={100}
-                                                            className="ms-2 mt-2"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        );
-                                    }
-                                })}
+                                {DoneJobs.map((DoneJob: ListJobProps) => (
+                                    <CardJob Job={DoneJob} />
+                                ))}
                             </div>
                         </div>
                     </Col>

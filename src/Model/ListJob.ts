@@ -1,11 +1,11 @@
 interface stepsProps {
-    stt: string;
+    stt: 'Todo' | 'Processing' | 'Done';
     name: string;
 }
-export interface ListProjectProps {
+export interface ListJobProps {
     id: number;
     task: string;
-    status: 'To-do' | 'Processing' | 'Done';
+    status: 'Todo' | 'Processing' | 'Done';
     deadline: Date;
     steps: stepsProps[];
     description: string;
@@ -15,15 +15,15 @@ export interface ListProjectProps {
     groupname: string;
 }
 
-export const ListProject: ListProjectProps[] = [
+export const ListJob: ListJobProps[] = [
     {
         id: 1,
         task: 'Đọc sách "Sapiens: Tóm tắt lịch sử nhân loại"',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-10'),
         steps: [
-            { stt: 'To-do', name: 'Mua sách hoặc mượn sách từ thư viện' },
-            { stt: 'To-do', name: 'Đọc và tìm hiểu nội dung sách' },
+            { stt: 'Todo', name: 'Mua sách hoặc mượn sách từ thư viện' },
+            { stt: 'Todo', name: 'Đọc và tìm hiểu nội dung sách' },
         ],
         description: 'Đọc cuốn sách Sapiens về lịch sử nhân loại',
         project: 'Cá nhân',
@@ -39,7 +39,7 @@ export const ListProject: ListProjectProps[] = [
         steps: [
             { stt: 'Processing', name: 'Xác định thời gian và địa điểm họp' },
             { stt: 'Processing', name: 'Chuẩn bị agenda buổi họp' },
-            { stt: 'To-do', name: 'Gửi thông báo cho thành viên' },
+            { stt: 'Todo', name: 'Gửi thông báo cho thành viên' },
         ],
         description: 'Chuẩn bị và tổ chức buổi họp dự án',
         project: 'XYZ Company',
@@ -50,11 +50,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 3,
         task: 'Đặt lịch khám bác sĩ',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-30'),
         steps: [
-            { stt: 'To-do', name: 'Chọn bác sĩ và đặt lịch hẹn' },
-            { stt: 'To-do', name: 'Chuẩn bị các thông tin cần thiết' },
+            { stt: 'Todo', name: 'Chọn bác sĩ và đặt lịch hẹn' },
+            { stt: 'Todo', name: 'Chuẩn bị các thông tin cần thiết' },
         ],
         description: 'Đặt lịch khám bác sĩ cho kiểm tra sức khỏe',
         project: 'Cá nhân',
@@ -97,12 +97,12 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 6,
         task: 'Họp nhóm dự án',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-20'),
         steps: [
-            { stt: 'To-do', name: 'Chuẩn bị agenda cuộc họp' },
-            { stt: 'To-do', name: 'Gửi thông báo cho thành viên' },
-            { stt: 'To-do', name: 'Tiến hành cuộc họp' },
+            { stt: 'Todo', name: 'Chuẩn bị agenda cuộc họp' },
+            { stt: 'Todo', name: 'Gửi thông báo cho thành viên' },
+            { stt: 'Todo', name: 'Tiến hành cuộc họp' },
         ],
         description: 'Họp nhóm dự án để trao đổi tiến độ và phân công công việc',
         project: 'Dự án ABC',
@@ -113,11 +113,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 7,
         task: 'Mua ví mới',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-25'),
         steps: [
-            { stt: 'To-do', name: 'Tìm hiểu và chọn mẫu ví' },
-            { stt: 'To-do', name: 'Đi mua ví hoặc đặt mua online' },
+            { stt: 'Todo', name: 'Tìm hiểu và chọn mẫu ví' },
+            { stt: 'Todo', name: 'Đi mua ví hoặc đặt mua online' },
         ],
         description: 'Cần mua một chiếc ví mới để thay thế ví cũ',
         project: 'Cá nhân',
@@ -128,11 +128,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 8,
         task: 'Luyện tập thể dục',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-18'),
         steps: [
-            { stt: 'To-do', name: 'Chuẩn bị quần áo và dụng cụ thể dục' },
-            { stt: 'To-do', name: 'Thực hiện bài tập luyện tập' },
+            { stt: 'Todo', name: 'Chuẩn bị quần áo và dụng cụ thể dục' },
+            { stt: 'Todo', name: 'Thực hiện bài tập luyện tập' },
         ],
         description: 'Luyện tập thể dục hàng ngày để duy trì sức khỏe',
         project: 'Sức khỏe',
@@ -163,7 +163,7 @@ export const ListProject: ListProjectProps[] = [
         steps: [
             { stt: 'Done', name: 'Thu thập dữ liệu' },
             { stt: 'Processing', name: 'Phân tích và xử lý dữ liệu' },
-            { stt: 'To-do', name: 'Viết báo cáo' },
+            { stt: 'Todo', name: 'Viết báo cáo' },
         ],
         description: 'Hoàn thành báo cáo tháng cho công việc',
         project: 'Công việc',
@@ -174,11 +174,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 11,
         task: 'Đặt lịch hẹn với khách hàng',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-22'),
         steps: [
-            { stt: 'To-do', name: 'Liên hệ và thống nhất thời gian' },
-            { stt: 'To-do', name: 'Xác nhận địa điểm và nội dung cuộc hẹn' },
+            { stt: 'Todo', name: 'Liên hệ và thống nhất thời gian' },
+            { stt: 'Todo', name: 'Xác nhận địa điểm và nội dung cuộc hẹn' },
         ],
         description: 'Đặt lịch hẹn với khách hàng để thảo luận về dự án',
         project: 'Kinh doanh',
@@ -189,11 +189,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 12,
         task: 'Dọn dẹp nhà cửa',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-17'),
         steps: [
-            { stt: 'To-do', name: 'Sắp xếp và dọn dẹp các phòng' },
-            { stt: 'To-do', name: 'Vệ sinh và lau chùi nơi cần thiết' },
+            { stt: 'Todo', name: 'Sắp xếp và dọn dẹp các phòng' },
+            { stt: 'Todo', name: 'Vệ sinh và lau chùi nơi cần thiết' },
         ],
         description: 'Dọn dẹp nhà cửa để có không gian sạch sẽ và gọn gàng',
         project: 'Cá nhân',
@@ -219,11 +219,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 14,
         task: 'Lập kế hoạch du lịch',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-24'),
         steps: [
-            { stt: 'To-do', name: 'Chọn điểm đến và thời gian du lịch' },
-            { stt: 'To-do', name: 'Đặt vé và book chỗ nghỉ' },
+            { stt: 'Todo', name: 'Chọn điểm đến và thời gian du lịch' },
+            { stt: 'Todo', name: 'Đặt vé và book chỗ nghỉ' },
         ],
         description: 'Lập kế hoạch cho chuyến du lịch sắp tới',
         project: 'Giải trí',
@@ -279,11 +279,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 18,
         task: 'Làm bài tập yoga',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-19'),
         steps: [
-            { stt: 'To-do', name: 'Chuẩn bị không gian và dụng cụ' },
-            { stt: 'To-do', name: 'Thực hiện các động tác yoga' },
+            { stt: 'Todo', name: 'Chuẩn bị không gian và dụng cụ' },
+            { stt: 'Todo', name: 'Thực hiện các động tác yoga' },
         ],
         description: 'Luyện tập yoga hàng ngày để thư giãn và tăng cường sức khỏe',
         project: 'Sức khỏe',
@@ -294,11 +294,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 19,
         task: 'Thử nghiệm phần mềm',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-06-23'),
         steps: [
-            { stt: 'To-do', name: 'Tạo kịch bản thử nghiệm' },
-            { stt: 'To-do', name: 'Thực hiện thử nghiệm và ghi lại kết quả' },
+            { stt: 'Todo', name: 'Tạo kịch bản thử nghiệm' },
+            { stt: 'Todo', name: 'Thực hiện thử nghiệm và ghi lại kết quả' },
         ],
         description: 'Thử nghiệm phần mềm mới trước khi triển khai',
         project: 'Công việc',
@@ -328,7 +328,7 @@ export const ListProject: ListProjectProps[] = [
         deadline: new Date('2023-07-05'),
         steps: [
             { stt: 'Processing', name: 'Thu thập dữ liệu và thông tin' },
-            { stt: 'To-do', name: 'Viết báo cáo và kiểm tra' },
+            { stt: 'Todo', name: 'Viết báo cáo và kiểm tra' },
         ],
         description: 'Viết báo cáo tổng kết về dự án XYZ',
         project: 'Dự án XYZ',
@@ -339,11 +339,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 22,
         task: 'Tổ chức buổi team building',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-07-10'),
         steps: [
-            { stt: 'To-do', name: 'Lên kế hoạch và chuẩn bị hoạt động' },
-            { stt: 'To-do', name: 'Thực hiện buổi team building' },
+            { stt: 'Todo', name: 'Lên kế hoạch và chuẩn bị hoạt động' },
+            { stt: 'Todo', name: 'Thực hiện buổi team building' },
         ],
         description: 'Tổ chức buổi team building để tăng cường tinh thần đồng đội',
         project: 'Công việc',
@@ -354,11 +354,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 23,
         task: 'Học khóa học trực tuyến',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-07-15'),
         steps: [
-            { stt: 'To-do', name: 'Chọn khóa học phù hợp' },
-            { stt: 'To-do', name: 'Tham gia và hoàn thành khóa học' },
+            { stt: 'Todo', name: 'Chọn khóa học phù hợp' },
+            { stt: 'Todo', name: 'Tham gia và hoàn thành khóa học' },
         ],
         description: 'Học khóa học trực tuyến để nâng cao kiến thức và kỹ năng',
         project: 'Phát triển bản thân',
@@ -384,11 +384,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 25,
         task: 'Tạo kế hoạch marketing',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-07-25'),
         steps: [
-            { stt: 'To-do', name: 'Nghiên cứu thị trường và đối tượng khách hàng' },
-            { stt: 'To-do', name: 'Xây dựng kế hoạch marketing chi tiết' },
+            { stt: 'Todo', name: 'Nghiên cứu thị trường và đối tượng khách hàng' },
+            { stt: 'Todo', name: 'Xây dựng kế hoạch marketing chi tiết' },
         ],
         description: 'Tạo kế hoạch marketing để quảng bá sản phẩm mới',
         project: 'Marketing',
@@ -414,11 +414,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 27,
         task: 'Phân tích dữ liệu thống kê',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-08-05'),
         steps: [
-            { stt: 'To-do', name: 'Thu thập dữ liệu từ các nguồn khác nhau' },
-            { stt: 'To-do', name: 'Phân tích và xử lý dữ liệu' },
+            { stt: 'Todo', name: 'Thu thập dữ liệu từ các nguồn khác nhau' },
+            { stt: 'Todo', name: 'Phân tích và xử lý dữ liệu' },
         ],
         description: 'Phân tích dữ liệu thống kê để đưa ra các thông tin quan trọng',
         project: 'Dự án Data Analytics',
@@ -433,7 +433,7 @@ export const ListProject: ListProjectProps[] = [
         deadline: new Date('2023-08-10'),
         steps: [
             { stt: 'Processing', name: 'Thiết kế giao diện và chức năng' },
-            { stt: 'To-do', name: 'Phát triển và kiểm thử ứng dụng' },
+            { stt: 'Todo', name: 'Phát triển và kiểm thử ứng dụng' },
         ],
         description: 'Xây dựng ứng dụng di động cho hệ điều hành iOS và Android',
         project: 'Dự án Mobile App',
@@ -459,11 +459,11 @@ export const ListProject: ListProjectProps[] = [
     {
         id: 30,
         task: 'Thiết kế logo mới',
-        status: 'To-do',
+        status: 'Todo',
         deadline: new Date('2023-08-20'),
         steps: [
-            { stt: 'To-do', name: 'Nghiên cứu về thương hiệu và ý tưởng thiết kế' },
-            { stt: 'To-do', name: 'Tạo ra các phiên bản logo' },
+            { stt: 'Todo', name: 'Nghiên cứu về thương hiệu và ý tưởng thiết kế' },
+            { stt: 'Todo', name: 'Tạo ra các phiên bản logo' },
         ],
         description: 'Thiết kế logo mới cho công ty',
         project: 'Dự án Branding',
