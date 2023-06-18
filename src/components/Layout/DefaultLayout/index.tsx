@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import Container from 'react-bootstrap/Container';
 import Taskbar from './Taskbar';
-import { Col, Row } from 'react-bootstrap';
 
 interface DefaultLayoutProps {
     children?: ReactNode;
@@ -11,21 +10,17 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
     return (
         /* <Header /> */
 
-        <Container fluid>
-            <Row className="gap-3" style={{ minHeight: '100vh', backgroundColor: 'black' }}>
-                <Col
-                    className="bg px-0 position-fixed"
-                    style={{ height: '100vh', width: '17vw', borderRadius: 10 }}
-                >
+        <Container fluid className="p-0 overflow-hidden">
+            <div className="d-flex " style={{ height: '100vh', backgroundColor: 'black' }}>
+                {/* Thanh taskbar */}
+                <div className="bg px-0 rounded-4" style={{ height: '100vh', width: '17.5vw' }}>
                     <Taskbar />
-                </Col>
-                <Col
-                    className="me-2 position-fixed"
-                    style={{ height: '100vh', width: '81.5vw', borderRadius: 10, right: 0 }}
-                >
+                </div>
+                {/* Cột content */}
+                <div className="ms-4 me-3" style={{ height: '100vh', width: '81.5vw' }}>
                     {children}
-                </Col>
-            </Row>
+                </div>
+            </div>
         </Container>
     );
 }

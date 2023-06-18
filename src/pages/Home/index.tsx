@@ -1,10 +1,9 @@
-import { Badge, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faFilter } from '@fortawesome/free-solid-svg-icons';
 import './Home.scss';
 import JobSmall from '../../components/JobSmall/JobSmall';
 import Notification from '../../components/Notification/Notification';
-import { ListJobProps } from '../../Model/ListJob';
 import { TodoJobs, ProcessingJobs, DoneJobs } from '../../Services/ProjectsService';
 import CardJob from '../../components/CardJob/CardJob';
 function Home() {
@@ -70,10 +69,10 @@ function Home() {
             </Row>
 
             {/* Phần Content chính */}
-            <div className="mt-3" style={{ height: '62.3vh' }}>
+            <div className="mt-3" style={{ height: '69.3vh' }}>
                 <Row className="h-100">
                     {/* Cột bên trái chứa filter */}
-                    <Col xs={1} className="p-0" style={{ width: '6%' }}>
+                    <Col xs={1} className="p-0 d-flex flex-column   " style={{ width: '6%' }}>
                         {/* Button filter */}
                         <button className="p-2 center home_button_filter w-100 fs-6 rounded-2">
                             <FontAwesomeIcon icon={faFilter} />
@@ -81,7 +80,7 @@ function Home() {
                         </button>
 
                         {/* Nav lọc công việc theo type */}
-                        <div className="bg mt-3 h-100 d-flex flex-column align-items-center rounded-3">
+                        <div className="bg mt-3 flex-grow-1 d-flex flex-column align-items-center rounded-3">
                             <div className="mt-2 mb-3 fw-medium ">Type</div>
                             <button className="home_filter_type type_active mb-4">ALL</button>
                             <button className="home_filter_type mb-4">Group</button>
@@ -134,35 +133,36 @@ function Home() {
                         {/* Todolist */}
                         <div className="mt-3 w-100 h-100 d-flex justify-content-between">
                             {/* Cột to-do */}
+
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {TodoJobs.map((TodoJob: ListJobProps) => (
-                                    <CardJob Job={TodoJob} />
+                                {TodoJobs.map((TodoJob, index) => (
+                                    <CardJob Job={TodoJob} key={index} />
                                 ))}
                             </div>
 
                             {/* Cột Processing */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {ProcessingJobs.map((ProcessingJob: ListJobProps) => (
-                                    <CardJob Job={ProcessingJob} />
+                                {ProcessingJobs.map((ProcessingJob, index) => (
+                                    <CardJob Job={ProcessingJob} key={index} />
                                 ))}
                             </div>
 
                             {/* Cột Done */}
                             <div
                                 className="overflow-y-scroll"
-                                style={{ width: '32.5%', height: '62.3vh' }}
+                                style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {DoneJobs.map((DoneJob: ListJobProps) => (
-                                    <CardJob Job={DoneJob} />
+                                {DoneJobs.map((DoneJob, index) => (
+                                    <CardJob Job={DoneJob} key={index} />
                                 ))}
                             </div>
                         </div>

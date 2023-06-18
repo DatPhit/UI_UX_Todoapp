@@ -17,7 +17,9 @@ function Taskbar() {
     const [isSignIn, setIsSignIn] = useState(true);
     return (
         <div className="d-flex flex-column positon-relative">
-            <div className="p-2 mt-2 d-flex align-items-center w-100 fs-6 ">
+            {/* Khung head chứa thông tin đăng nhập hay chưa */}
+            <div className="p-2 mt-2 w-100 d-flex align-items-center fs-6 ">
+                {/* Nếu chưa đăng nhập thì hiện comp đky đăng nhập */}
                 {!isSignIn && (
                     <>
                         <FontAwesomeIcon icon={faCircleUser} style={{ height: '3.2rem' }} />
@@ -30,6 +32,7 @@ function Taskbar() {
                         </Link>
                     </>
                 )}
+                {/* Nếu đã đăng nhập thì hiện tên, ảnh */}
                 {isSignIn && (
                     <>
                         <img
@@ -48,20 +51,23 @@ function Taskbar() {
                 )}
             </div>
 
-            <NavItem
-                text="Trang chủ"
-                classN={`${isSignIn ? 'nav_active' : ''}`}
-                icon={faHouse}
-                href="/"
-            />
-            <NavItem text="Xem nhóm" icon={faPeopleGroup} href="/group" />
-            <NavItem text="Thông tin cá nhân" icon={faUser} href="/me" />
-            <NavItem text="Thêm công việc mới" icon={faPlus} href="/add-task" />
+            {/* Các thanh điều hướng */}
+            <div className="mb-5">
+                <NavItem
+                    text="Trang chủ"
+                    classN={`${isSignIn ? 'nav_active' : ''}`}
+                    icon={faHouse}
+                    href="/"
+                />
+                <NavItem text="Xem nhóm" icon={faPeopleGroup} href="/group" />
+                <NavItem text="Thông tin cá nhân" icon={faUser} href="/me" />
+                <NavItem text="Thêm công việc mới" icon={faPlus} href="/add-task" />
+            </div>
 
             {isSignIn && (
-                <span className="w-100 position-absolute bottom-15">
+                <div className="mt-5">
                     <SignOut />
-                </span>
+                </div>
             )}
         </div>
     );
