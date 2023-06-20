@@ -3,17 +3,39 @@ import { faAnglesUp, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import { Badge, ProgressBar } from 'react-bootstrap';
-import { ListJobProps } from '../../Model/ListJob';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import './CardJob.scss';
-import { useState } from 'react';
+import { ListJobProps } from '../../Model/ListJob';
+import { addProcess, changeStatusToProcessing, deleteProcess } from '../../pages/Home/processSlice';
+import { deleteTodo } from '../../pages/Home/todoSlice';
+import { addDone, changeStatusToDone } from '../../pages/Home/doneSlice';
 
 interface CardJobProps {
     Job: ListJobProps;
+    index?: number;
 }
-const CardJob: React.FC<CardJobProps> = ({ Job }) => {
+const CardJob: React.FC<CardJobProps> = ({ Job, index }) => {
     const [showDetails, setShowDetails] = useState(false);
     const { id, task, status, deadline, steps, description, project, type, priority, groupname } =
         Job;
+
+    // Redux
+    const dispatch = useDispatch();
+
+    const handleChangeStatus = () => {
+        if (status === 'Todo') {
+            dispatch(addProcess(Job));
+            dispatch(deleteTodo(index));
+            dispatch(changeStatusToProcessing());
+        }
+        if (status === 'Processing') {
+            dispatch(addDone(Job));
+            dispatch(deleteProcess(index));
+            dispatch(changeStatusToDone());
+        }
+    };
 
     return (
         <div
@@ -23,6 +45,7 @@ const CardJob: React.FC<CardJobProps> = ({ Job }) => {
         >
             {/* Badge status */}
             <button
+                onClick={handleChangeStatus}
                 className={`p-1 position-absolute end-3 ${showDetails ? 'top-2' : 'top-5'}`}
                 style={{
                     backgroundColor: 'transparent',
@@ -48,7 +71,7 @@ const CardJob: React.FC<CardJobProps> = ({ Job }) => {
                     setShowDetails(!showDetails);
                 }}
                 className="mb-2 CardJob_head d-flex justify-content-start align-items-center"
-                style={{ width: '83%' }}
+                style={{ width: '77%' }}
             >
                 <FontAwesomeIcon
                     className={`CardJob_IconAngles text-danger ${showDetails ? 'rotated' : ''}`}

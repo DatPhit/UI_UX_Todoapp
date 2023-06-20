@@ -1,12 +1,14 @@
 interface stepsProps {
-    stt: 'Todo' | 'Processing' | 'Done';
+    stt: statusValue;
     name: string;
 }
+
+type statusValue = 'Todo' | 'Processing' | 'Done';
 export interface ListJobProps {
     id: number;
     task: string;
-    status: 'Todo' | 'Processing' | 'Done';
-    deadline: Date;
+    status: statusValue;
+    deadline: Date | string;
     steps: stepsProps[];
     description: string;
     project: string;
@@ -20,7 +22,7 @@ export const ListJob: ListJobProps[] = [
         id: 1,
         task: 'Đọc sách "Sapiens: Tóm tắt lịch sử nhân loại"',
         status: 'Todo',
-        deadline: new Date('2023-06-10'),
+        deadline: '2023-06-10',
         steps: [
             { stt: 'Todo', name: 'Mua sách hoặc mượn sách từ thư viện' },
             { stt: 'Todo', name: 'Đọc và tìm hiểu nội dung sách' },
@@ -35,7 +37,7 @@ export const ListJob: ListJobProps[] = [
         id: 2,
         task: 'Chuẩn bị buổi họp dự án',
         status: 'Processing',
-        deadline: new Date('2023-06-02'),
+        deadline: '2023-06-02',
         steps: [
             { stt: 'Processing', name: 'Xác định thời gian và địa điểm họp' },
             { stt: 'Processing', name: 'Chuẩn bị agenda buổi họp' },
@@ -51,7 +53,7 @@ export const ListJob: ListJobProps[] = [
         id: 3,
         task: 'Đặt lịch khám bác sĩ',
         status: 'Todo',
-        deadline: new Date('2023-06-30'),
+        deadline: '2023-06-30',
         steps: [
             { stt: 'Todo', name: 'Chọn bác sĩ và đặt lịch hẹn' },
             { stt: 'Todo', name: 'Chuẩn bị các thông tin cần thiết' },
@@ -66,7 +68,7 @@ export const ListJob: ListJobProps[] = [
         id: 4,
         task: 'Đặt vé xem phim',
         status: 'Processing',
-        deadline: new Date('2023-06-15'),
+        deadline: '2023-06-15',
         steps: [
             { stt: 'Processing', name: 'Chọn bộ phim muốn xem' },
             { stt: 'Processing', name: 'Tìm suất chiếu phù hợp' },
@@ -82,7 +84,7 @@ export const ListJob: ListJobProps[] = [
         id: 5,
         task: 'Hoàn thiện bài tập lớn',
         status: 'Done',
-        deadline: new Date('2023-06-30'),
+        deadline: '2023-06-30',
         steps: [
             { stt: 'Done', name: 'Nghiên cứu và phân tích yêu cầu' },
             { stt: 'Done', name: 'Thiết kế và triển khai giải pháp' },
@@ -98,7 +100,7 @@ export const ListJob: ListJobProps[] = [
         id: 6,
         task: 'Họp nhóm dự án',
         status: 'Todo',
-        deadline: new Date('2023-06-20'),
+        deadline: '2023-06-20',
         steps: [
             { stt: 'Todo', name: 'Chuẩn bị agenda cuộc họp' },
             { stt: 'Todo', name: 'Gửi thông báo cho thành viên' },
@@ -114,7 +116,7 @@ export const ListJob: ListJobProps[] = [
         id: 7,
         task: 'Mua ví mới',
         status: 'Todo',
-        deadline: new Date('2023-06-25'),
+        deadline: '2023-06-25',
         steps: [
             { stt: 'Todo', name: 'Tìm hiểu và chọn mẫu ví' },
             { stt: 'Todo', name: 'Đi mua ví hoặc đặt mua online' },
@@ -129,7 +131,7 @@ export const ListJob: ListJobProps[] = [
         id: 8,
         task: 'Luyện tập thể dục',
         status: 'Todo',
-        deadline: new Date('2023-06-18'),
+        deadline: '2023-06-18',
         steps: [
             { stt: 'Todo', name: 'Chuẩn bị quần áo và dụng cụ thể dục' },
             { stt: 'Todo', name: 'Thực hiện bài tập luyện tập' },
@@ -144,7 +146,7 @@ export const ListJob: ListJobProps[] = [
         id: 9,
         task: 'Xem phim mới',
         status: 'Done',
-        deadline: new Date('2023-06-12'),
+        deadline: '2023-06-12',
         steps: [
             { stt: 'Done', name: 'Tìm hiểu và chọn bộ phim mới' },
             { stt: 'Done', name: 'Tìm suất chiếu phim' },
@@ -159,7 +161,7 @@ export const ListJob: ListJobProps[] = [
         id: 10,
         task: 'Hoàn thành báo cáo tháng',
         status: 'Processing',
-        deadline: new Date('2023-06-28'),
+        deadline: '2023-06-28',
         steps: [
             { stt: 'Done', name: 'Thu thập dữ liệu' },
             { stt: 'Processing', name: 'Phân tích và xử lý dữ liệu' },
@@ -175,7 +177,7 @@ export const ListJob: ListJobProps[] = [
         id: 11,
         task: 'Đặt lịch hẹn với khách hàng',
         status: 'Todo',
-        deadline: new Date('2023-06-22'),
+        deadline: '2023-06-22',
         steps: [
             { stt: 'Todo', name: 'Liên hệ và thống nhất thời gian' },
             { stt: 'Todo', name: 'Xác nhận địa điểm và nội dung cuộc hẹn' },
@@ -190,7 +192,7 @@ export const ListJob: ListJobProps[] = [
         id: 12,
         task: 'Dọn dẹp nhà cửa',
         status: 'Todo',
-        deadline: new Date('2023-06-17'),
+        deadline: '2023-06-17',
         steps: [
             { stt: 'Todo', name: 'Sắp xếp và dọn dẹp các phòng' },
             { stt: 'Todo', name: 'Vệ sinh và lau chùi nơi cần thiết' },
@@ -205,7 +207,7 @@ export const ListJob: ListJobProps[] = [
         id: 13,
         task: 'Tham gia khóa học online',
         status: 'Done',
-        deadline: new Date('2023-06-14'),
+        deadline: '2023-06-14',
         steps: [
             { stt: 'Done', name: 'Tìm hiểu và đăng ký khóa học' },
             { stt: 'Done', name: 'Hoàn thành các bài tập và bài kiểm tra' },
@@ -220,7 +222,7 @@ export const ListJob: ListJobProps[] = [
         id: 14,
         task: 'Lập kế hoạch du lịch',
         status: 'Todo',
-        deadline: new Date('2023-06-24'),
+        deadline: '2023-06-24',
         steps: [
             { stt: 'Todo', name: 'Chọn điểm đến và thời gian du lịch' },
             { stt: 'Todo', name: 'Đặt vé và book chỗ nghỉ' },
@@ -235,7 +237,7 @@ export const ListJob: ListJobProps[] = [
         id: 15,
         task: 'Đi mua quà sinh nhật',
         status: 'Done',
-        deadline: new Date('2023-06-26'),
+        deadline: '2023-06-26',
         steps: [
             { stt: 'Done', name: 'Lên danh sách quà tặng' },
             { stt: 'Done', name: 'Mua quà và sắp xếp đóng gói' },
@@ -250,7 +252,7 @@ export const ListJob: ListJobProps[] = [
         id: 16,
         task: 'Họp dự án',
         status: 'Processing',
-        deadline: new Date('2023-06-21'),
+        deadline: '2023-06-21',
         steps: [
             { stt: 'Processing', name: 'Chuẩn bị nội dung cuộc họp' },
             { stt: 'Processing', name: 'Tổ chức cuộc họp và ghi chú' },
@@ -265,7 +267,7 @@ export const ListJob: ListJobProps[] = [
         id: 17,
         task: 'Thiết kế giao diện website',
         status: 'Done',
-        deadline: new Date('2023-06-27'),
+        deadline: '2023-06-27',
         steps: [
             { stt: 'Done', name: 'Nghiên cứu và thiết kế giao diện' },
             { stt: 'Done', name: 'Chuyển đổi thiết kế sang mã nguồn' },
@@ -280,7 +282,7 @@ export const ListJob: ListJobProps[] = [
         id: 18,
         task: 'Làm bài tập yoga',
         status: 'Todo',
-        deadline: new Date('2023-06-19'),
+        deadline: '2023-06-19',
         steps: [
             { stt: 'Todo', name: 'Chuẩn bị không gian và dụng cụ' },
             { stt: 'Todo', name: 'Thực hiện các động tác yoga' },
@@ -295,7 +297,7 @@ export const ListJob: ListJobProps[] = [
         id: 19,
         task: 'Thử nghiệm phần mềm',
         status: 'Todo',
-        deadline: new Date('2023-06-23'),
+        deadline: '2023-06-23',
         steps: [
             { stt: 'Todo', name: 'Tạo kịch bản thử nghiệm' },
             { stt: 'Todo', name: 'Thực hiện thử nghiệm và ghi lại kết quả' },
@@ -310,7 +312,7 @@ export const ListJob: ListJobProps[] = [
         id: 20,
         task: 'Làm việc với khách hàng',
         status: 'Processing',
-        deadline: new Date('2023-06-29'),
+        deadline: '2023-06-29',
         steps: [
             { stt: 'Processing', name: 'Tiếp nhận yêu cầu khách hàng' },
             { stt: 'Processing', name: 'Tư vấn và giải đáp thắc mắc' },
@@ -325,7 +327,7 @@ export const ListJob: ListJobProps[] = [
         id: 21,
         task: 'Viết báo cáo tổng kết',
         status: 'Processing',
-        deadline: new Date('2023-07-05'),
+        deadline: '2023-07-05',
         steps: [
             { stt: 'Processing', name: 'Thu thập dữ liệu và thông tin' },
             { stt: 'Todo', name: 'Viết báo cáo và kiểm tra' },
@@ -340,7 +342,7 @@ export const ListJob: ListJobProps[] = [
         id: 22,
         task: 'Tổ chức buổi team building',
         status: 'Todo',
-        deadline: new Date('2023-07-10'),
+        deadline: '2023-07-10',
         steps: [
             { stt: 'Todo', name: 'Lên kế hoạch và chuẩn bị hoạt động' },
             { stt: 'Todo', name: 'Thực hiện buổi team building' },
@@ -355,7 +357,7 @@ export const ListJob: ListJobProps[] = [
         id: 23,
         task: 'Học khóa học trực tuyến',
         status: 'Todo',
-        deadline: new Date('2023-07-15'),
+        deadline: '2023-07-15',
         steps: [
             { stt: 'Todo', name: 'Chọn khóa học phù hợp' },
             { stt: 'Todo', name: 'Tham gia và hoàn thành khóa học' },
@@ -370,7 +372,7 @@ export const ListJob: ListJobProps[] = [
         id: 24,
         task: 'Thiết kế giao diện website',
         status: 'Processing',
-        deadline: new Date('2023-07-20'),
+        deadline: '2023-07-20',
         steps: [
             { stt: 'Done', name: 'Nghiên cứu yêu cầu và thiết kế giao diện' },
             { stt: 'Processing', name: 'Phát triển và kiểm tra giao diện' },
@@ -385,7 +387,7 @@ export const ListJob: ListJobProps[] = [
         id: 25,
         task: 'Tạo kế hoạch marketing',
         status: 'Todo',
-        deadline: new Date('2023-07-25'),
+        deadline: '2023-07-25',
         steps: [
             { stt: 'Todo', name: 'Nghiên cứu thị trường và đối tượng khách hàng' },
             { stt: 'Todo', name: 'Xây dựng kế hoạch marketing chi tiết' },
@@ -400,7 +402,7 @@ export const ListJob: ListJobProps[] = [
         id: 26,
         task: 'Triển khai hệ thống CRM',
         status: 'Done',
-        deadline: new Date('2023-07-30'),
+        deadline: '2023-07-30',
         steps: [
             { stt: 'Done', name: 'Chuẩn bị và cài đặt hệ thống CRM' },
             { stt: 'Done', name: 'Đào tạo nhân viên sử dụng' },
@@ -415,7 +417,7 @@ export const ListJob: ListJobProps[] = [
         id: 27,
         task: 'Phân tích dữ liệu thống kê',
         status: 'Todo',
-        deadline: new Date('2023-08-05'),
+        deadline: '2023-08-05',
         steps: [
             { stt: 'Todo', name: 'Thu thập dữ liệu từ các nguồn khác nhau' },
             { stt: 'Todo', name: 'Phân tích và xử lý dữ liệu' },
@@ -430,7 +432,7 @@ export const ListJob: ListJobProps[] = [
         id: 28,
         task: 'Xây dựng ứng dụng di động',
         status: 'Processing',
-        deadline: new Date('2023-08-10'),
+        deadline: '2023-08-10',
         steps: [
             { stt: 'Processing', name: 'Thiết kế giao diện và chức năng' },
             { stt: 'Todo', name: 'Phát triển và kiểm thử ứng dụng' },
@@ -445,7 +447,7 @@ export const ListJob: ListJobProps[] = [
         id: 29,
         task: 'Lập kế hoạch đào tạo nhân viên',
         status: 'Done',
-        deadline: new Date('2023-08-15'),
+        deadline: '2023-08-15',
         steps: [
             { stt: 'Done', name: 'Xác định nhu cầu đào tạo' },
             { stt: 'Done', name: 'Lập kế hoạch và triển khai' },
@@ -460,7 +462,7 @@ export const ListJob: ListJobProps[] = [
         id: 30,
         task: 'Thiết kế logo mới',
         status: 'Todo',
-        deadline: new Date('2023-08-20'),
+        deadline: '2023-08-20',
         steps: [
             { stt: 'Todo', name: 'Nghiên cứu về thương hiệu và ý tưởng thiết kế' },
             { stt: 'Todo', name: 'Tạo ra các phiên bản logo' },

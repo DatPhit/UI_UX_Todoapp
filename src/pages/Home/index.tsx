@@ -1,12 +1,20 @@
 import { Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+
 import './Home.scss';
 import JobSmall from '../../components/JobSmall/JobSmall';
 import Notification from '../../components/Notification/Notification';
-import { TodoJobs, ProcessingJobs, DoneJobs } from '../../Services/ProjectsService';
 import CardJob from '../../components/CardJob/CardJob';
+import { doneListSelector, processListSelector, todoListSelector } from '../../redux/selectors';
+
 function Home() {
+    // Redux
+    const todoList = useSelector(todoListSelector);
+    const processList = useSelector(processListSelector);
+    const doneList = useSelector(doneListSelector);
+
     return (
         <div>
             {/* Phần đầu của content */}
@@ -139,8 +147,8 @@ function Home() {
                                 style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {TodoJobs.map((TodoJob, index) => (
-                                    <CardJob Job={TodoJob} key={index} />
+                                {todoList.map((TodoJob, index) => (
+                                    <CardJob Job={TodoJob} key={index} index={index} />
                                 ))}
                             </div>
 
@@ -150,8 +158,8 @@ function Home() {
                                 style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {ProcessingJobs.map((ProcessingJob, index) => (
-                                    <CardJob Job={ProcessingJob} key={index} />
+                                {processList.map((ProcessingJob, index) => (
+                                    <CardJob Job={ProcessingJob} key={index} index={index} />
                                 ))}
                             </div>
 
@@ -161,7 +169,7 @@ function Home() {
                                 style={{ width: '32.5%', height: '63.8vh' }}
                             >
                                 {/* Card */}
-                                {DoneJobs.map((DoneJob, index) => (
+                                {doneList.map((DoneJob, index) => (
                                     <CardJob Job={DoneJob} key={index} />
                                 ))}
                             </div>
